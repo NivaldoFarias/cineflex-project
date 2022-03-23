@@ -1,5 +1,5 @@
 import React from "react";
-import Wrapper from "../Routes";
+import Wrapper from "./../Routes";
 
 export default function App() {
   return (
