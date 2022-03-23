@@ -1,0 +1,135 @@
+@import "./sass/variables";
+@import "./sass/resets";
+@import "./sass/mixins";
+
+body {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+
+  -ms-overflow-style: none; /* for IE, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow: hidden;
+  background-color: $light-purple;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+header {
+  @include flex(initial, center, center, initial);
+
+  width: 67px;
+  height: 100%;
+
+  font-size: 1.3em;
+  color: white;
+  letter-spacing: 2px;
+
+  box-shadow: $default-box-shadow;
+  background-color: $default-pink;
+}
+#main {
+  @include flex(column, center, initial, 0);
+
+  height: fit-content;
+  max-width: 375px;
+
+  background-color: transparent;
+
+  h4 {
+    height: 100px;
+    width: 100%;
+
+    font-size: 1.1em;
+  }
+  section {
+    @include flex(row, center, center, 30px);
+
+    height: fit-content;
+    max-width: 375px;
+  }
+  article.movie-poster {
+    height: 209px;
+    width: 145px;
+
+    border-radius: $default-border-radius;
+    box-shadow: $default-box-shadow;
+    background-color: transparent;
+
+    img {
+      height: 193px;
+      width: 129px;
+
+      border-radius: $default-border-radius;
+    }
+  }
+}
+#session {
+  @include flex(column, center, initial, 5px);
+
+  p {
+    font-size: 1.5em;
+  }
+}
+.btn {
+  position: relative;
+  left: 0px;
+  top: 0px;
+
+  padding: 15px;
+  width: 150px;
+
+  font-size: 0.9em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: $font-recursive;
+  color: $btn-red;
+
+  transition: all 300ms ease-in-out 0s;
+
+  border: 1px solid $btn-red;
+  border-radius: $default-border-radius;
+  box-shadow: $btn-red 4px 4px 0px 0px;
+  background-color: rgb(255, 255, 255);
+}
+.btn.clicked {
+  left: 4px;
+  top: 4px;
+
+  box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px;
+}
+@keyframes img-pulse {
+  0% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    filter: brightness(110%);
+  }
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    filter: brightness(90%);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    filter: brightness(110%);
+  }
+}
+@keyframes loading-pulse {
+  0% {
+    transform: scale(1.05);
+    filter: brightness(140%);
+    filter: blur(0.05rem);
+  }
+  50% {
+    transform: scale(0.95);
+    filter: brightness(90%);
+    filter: blur(0.15rem);
+  }
+  100% {
+    transform: scale(1.05);
+    filter: brightness(140%);
+    filter: blur(0.05rem);
+  }
+}
