@@ -4,13 +4,15 @@
   box-sizing: border-box;
   outline: none !important;
   font-family: "Roboto", sans-serif !important;
+  letter-spacing: 1px;
   cursor: default;
 }
 *.hidden {
   display: none !important;
 }
-*.opaque {
+*.disabled {
   opacity: 0.4;
+  pointer-events: none;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 

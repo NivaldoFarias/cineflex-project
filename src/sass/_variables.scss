@@ -5,8 +5,8 @@ $poster-box-shadow: -1px 2px 6px 3px rgba(0, 0, 0, 0.1);
 $default-text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.89);
 $schedule-box-shadow: inset -2px 1px 6px 1px rgba(0, 0, 0, 0.1);
 
+$dark-pink: rgb(224, 8, 109);
 $default-pink: rgb(250, 64, 152);
-$btn-shadow-pink: rgb(255, 110, 178);
 $light-pink: rgb(255, 131, 189);
 $lighter-pink: rgb(255, 210, 231);
 
@@ -14,11 +14,18 @@ $default-purple: rgb(151, 55, 214);
 $light-purple: rgb(219, 167, 253);
 $lighter-purple: rgb(236, 213, 252);
 
+$primary-color: rgb(76, 30, 79);
+$secondary-color: rgb(95, 72, 224);
+$alt-secondary-color: rgb(128, 142, 161);
+$tertiary-color: rgb(250, 126, 97);
+$alt-tertiary-color: rgb(253, 235, 220);
+
 $seat-available: rgba(195, 207, 217, 1);
 $seat-unavailable: rgba(251, 225, 146, 1);
 
 $alt-blue: rgba(36, 122, 107, 1);
 $btn-default: rgba(232, 131, 58, 1);
+$btn-shadow-secondary-color: rgb(56, 42, 138);
 
 $default-border-radius: 3px;
 $regular-font-size: 18px;

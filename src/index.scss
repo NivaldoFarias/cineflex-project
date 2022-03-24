@@ -12,7 +12,7 @@ body {
   -ms-overflow-style: none; /* for IE, Edge */
   scrollbar-width: none; /* for Firefox */
   overflow-x: hidden;
-  background-color: $lighter-purple;
+  background-color: $alt-tertiary-color;
 }
 body::-webkit-scrollbar {
   display: none;
@@ -29,7 +29,7 @@ header {
   color: white;
 
   box-shadow: $default-box-shadow;
-  background-color: $default-purple;
+  background-color: $primary-color;
 }
 h4 {
   @include flex(initial, center, center, initial);
@@ -39,8 +39,48 @@ h4 {
 
   font-size: 1.5em;
   font-weight: 300;
-  letter-spacing: 1px;
+
   text-shadow: $default-text-shadow;
+}
+a.default-btn {
+  @include flex(column, center, center, initial);
+
+  font-weight: 300;
+  color: white;
+
+  outline: none !important;
+  text-decoration: none !important;
+
+  box-shadow: $default-box-shadow;
+  border-radius: $default-border-radius;
+  background-color: $secondary-color;
+}
+footer.selected-movie {
+  @include flex(row, flex-start, center, 15px);
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  padding: 10px 14px;
+  min-height: 117px;
+  width: 100%;
+
+  font-size: 1.2em;
+  font-weight: 300;
+  letter-spacing: 2px;
+
+  box-shadow: $invert-box-shadow;
+  background-color: $alt-tertiary-color;
+
+  img {
+    height: 92px;
+
+    border: 4px solid $primary-color;
+    border-radius: $default-border-radius;
+  }
+  .overview {
+    @include flex(column, initial, flex-start, 15px);
+  }
 }
 #main {
   @include flex(column, center, center, 0);
@@ -71,7 +111,7 @@ h4 {
     background-color: transparent;
 
     img {
-      width: 100%;
+      width: 95%;
 
       border-radius: $default-border-radius;
     }
@@ -102,49 +142,13 @@ h4 {
       text-align: start;
     }
     &__time-option {
-      @include flex(column, center, center, initial);
-
       height: $time-option-box-height;
       width: $time-option-box-width;
-
-      font-weight: 300;
-      color: white;
-
-      outline: none !important;
-      text-decoration: none !important;
-
-      box-shadow: $default-box-shadow;
-      border-radius: $default-border-radius;
-      background-color: $light-pink;
-    }
-  }
-  .selected-movie {
-    @include flex(row, flex-start, center, 15px);
-    position: fixed;
-    bottom: 0;
-    right: 0;
-
-    padding: 10px 14px;
-    min-height: 117px;
-    width: 100%;
-
-    font-size: 1.3em;
-    font-weight: 300;
-    letter-spacing: 2px;
-
-    box-shadow: $invert-box-shadow;
-    background-color: $lighter-purple;
-
-    img {
-      height: 89px;
-
-      border: 3px solid $light-pink;
-      border-radius: $default-border-radius;
     }
   }
 }
 #session {
-  @include flex(column, center, center, 5px);
+  @include flex(column, center, center, 15px);
   padding: 0 24px;
 
   .seats-grid {
@@ -155,31 +159,153 @@ h4 {
 
     width: 337px;
     height: 203px;
+  }
+  .seat-option {
+    @include flex(initial, center, center, initial);
+    position: relative;
+    left: 0px;
+    top: 0px;
 
-    &__seat-option {
-      @include flex(initial, center, center, initial);
-      position: relative;
-      left: 0px;
-      top: 0px;
+    padding: 1px 0 0 1.5px;
+    height: 26px;
+    width: 26px;
 
-      padding-top: 2px;
-      height: 26px;
-      width: 26px;
+    font-size: 0.77em;
+    font-weight: 300;
+    color: white;
 
-      font-size: 0.9em;
-      font-weight: 300;
+    border-radius: 50%;
+    border: 1px solid $btn-shadow-secondary-color;
+    background-color: $secondary-color;
+    box-shadow: $btn-shadow-secondary-color 0px 3px 0px 0px;
+    transition: all 300ms ease-in-out 0s;
 
-      border-radius: 50%;
-      background-color: $light-pink;
-      box-shadow: $btn-shadow-pink 0px 3px 0px 0px;
-      transition: all 300ms ease-in-out 0s;
-    }
-    &__seat-option.clicked {
+    &.selected {
       left: 0px;
       top: 3px;
 
+      background-color: $tertiary-color;
       box-shadow: transparent 0px 0px 0px 0px;
     }
+    &.unavailable {
+      background-color: $alt-secondary-color;
+    }
+  }
+  .seat-examples {
+    @include flex(row, center, center, 37px);
+
+    margin-bottom: 20px;
+    padding: 0 56px;
+    height: 53px;
+    width: 100%;
+
+    > div {
+      @include flex(column, space-between, center, initial);
+
+      height: 50px;
+      width: fit-content;
+
+      font-size: 13px;
+      font-weight: 300;
+    }
+  }
+  .user-inputs {
+    @include flex(column, center, center, 35px);
+    position: relative;
+
+    margin-top: 10px;
+
+    /* modified input field css sourced from https://codepen.io/chris__sev/pen/LYOyjY?editors=1100 */
+    &__group {
+      position: relative;
+
+      input {
+        display: block;
+
+        padding: 10px 10px 10px 5px;
+        width: 300px;
+
+        font-weight: 300;
+        font-size: 17px;
+
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid #757575;
+      }
+      input:focus {
+        outline: none;
+      }
+      label {
+        position: absolute;
+        top: 15px;
+        left: 5px;
+
+        font-size: 15px;
+        font-weight: 300;
+
+        color: #999;
+
+        pointer-events: none;
+        transition: 0.2s ease all;
+      }
+      /* active state */
+      input:focus ~ label,
+      input:valid ~ label {
+        top: -10px;
+        font-size: 14px;
+        color: #5264ae;
+      }
+      /* BOTTOM BARS ================================= */
+      .bar {
+        position: relative;
+        display: block;
+        width: 300px;
+      }
+      .bar:before,
+      .bar:after {
+        position: absolute;
+        bottom: 1px;
+
+        height: 2px;
+        width: 0;
+
+        content: "";
+        background: #5264ae;
+        transition: 0.2s ease all;
+      }
+      .bar:before {
+        left: 50%;
+      }
+      .bar:after {
+        right: 50%;
+      }
+      /* active state */
+      input:focus ~ .bar:before,
+      input:focus ~ .bar:after {
+        width: 50%;
+      }
+      /* HIGHLIGHTER ================================== */
+      .highlight {
+        position: absolute;
+        top: 25%;
+        left: 0;
+
+        height: 60%;
+        width: 100px;
+
+        opacity: 0.5;
+        pointer-events: none;
+      }
+      /* active state */
+      input:focus ~ .highlight {
+        animation: input-highlighter 0.3s ease;
+      }
+    }
+  }
+  .default-btn {
+    margin-top: 30px;
+    height: 42px;
+    width: 225px;
   }
 }
 @keyframes img-pulse {
@@ -214,5 +340,14 @@ h4 {
     transform: scale(1.05);
     filter: brightness(140%);
     filter: blur(0.05rem);
+  }
+}
+@keyframes input-highlighter {
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
   }
 }
