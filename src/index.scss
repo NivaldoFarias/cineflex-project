@@ -38,6 +38,10 @@ h4 {
 
   text-shadow: $default-text-shadow;
 }
+a {
+  outline: none;
+  text-decoration: none;
+}
 footer.selected-movie {
   @include flex(row, flex-start, center, 15px);
   position: fixed;
@@ -104,9 +108,6 @@ div.seat-option {
 
   font-weight: 300;
   color: white;
-
-  outline: none !important;
-  text-decoration: none !important;
 
   cursor: pointer;
   transition: all 300ms ease-in-out 0s;
@@ -265,7 +266,7 @@ div.seat-option {
       input:valid ~ label {
         top: -10px;
         font-size: 14px;
-        color: #5264ae;
+        color: $bar-primary;
       }
       /* BOTTOM BARS ================================= */
       .bar {
@@ -282,7 +283,7 @@ div.seat-option {
         width: 0;
 
         content: "";
-        background: #5264ae;
+        background: $bar-primary;
         transition: 0.2s ease all;
       }
       .bar:before {
@@ -342,20 +343,19 @@ div.seat-option {
   }
 }
 #output {
-  @include flex(column, center, flex-start, 20px);
+  @include flex(column, center, flex-start, 25px);
   position: relative;
   padding: 0 24px;
 
   h4 {
-    padding-top: 10px;
+    padding-top: 20px;
     height: 80px;
 
     text-align: center;
     font-size: 1.6em;
   }
-
   .output-movie {
-    @include flex(column, center, flex-start, 10px);
+    @include flex(column, center, flex-start, 15px);
     width: 100%;
 
     font-weight: 300;
@@ -374,7 +374,7 @@ div.seat-option {
       font-size: 1.75em;
     }
     &__data {
-      @include flex(column, initial, flex-start, 3px);
+      @include flex(column, initial, flex-start, 10px);
       width: 100%;
 
       padding-left: 5px;
@@ -383,7 +383,7 @@ div.seat-option {
     }
   }
   .output-bookings {
-    @include flex(column, center, flex-start, 10px);
+    @include flex(column, center, flex-start, 5px);
     width: 100%;
 
     font-weight: 300;
@@ -400,7 +400,7 @@ div.seat-option {
       font-size: 1.75em;
     }
     &__data {
-      @include flex(column, center, flex-start, 3px);
+      @include flex(column, center, flex-start, 5px);
       width: 100%;
 
       padding-left: 5px;
@@ -436,14 +436,128 @@ div.seat-option {
       font-size: 1.75em;
     }
     &__data {
-      @include flex(column, center, flex-start, 6px);
+      @include flex(column, center, flex-start, 7px);
       width: 100%;
 
       padding-left: 5px;
+    }
+    &__data span {
       font-style: italic;
     }
     &__data p {
       font-size: 1.2em;
+    }
+  }
+  .btn-container {
+    @include flex(column, center, center, 5px);
+    position: relative;
+    width: 100%;
+
+    &__home-btn {
+      align-self: center;
+      margin-top: 10px;
+
+      font-size: 1.1em;
+      letter-spacing: 3px;
+      text-align: center;
+      text-transform: uppercase;
+      color: $tertiary-color;
+
+      cursor: pointer;
+      border-style: none;
+      background-color: inherit;
+      transition: all 200ms ease-in-out 0s;
+    }
+    &__home-btn:hover {
+      color: $bar-primary;
+    }
+    .bar {
+      position: relative;
+      display: block;
+      width: 220px;
+    }
+    .bar:before,
+    .bar:after {
+      position: absolute;
+      bottom: 1px;
+
+      height: 2px;
+      width: 0;
+
+      content: "";
+      background: $bar-primary;
+      transition: all 200ms ease-in-out 0s;
+    }
+    .bar:before {
+      left: 50%;
+    }
+    .bar:after {
+      right: 50%;
+    }
+    /* active state */
+    &__home-btn:hover ~ .bar:before,
+    &__home-btn:hover ~ .bar:after {
+      width: 50%;
+    }
+  }
+  .output-display {
+    @include flex(initial, center, center, initial);
+    position: relative;
+
+    width: 100%;
+    height: 150px;
+
+    font-weight: 300;
+
+    figcaption {
+      height: fit-content;
+
+      font-size: 0.85em;
+      line-height: 16px;
+    }
+    .image-container {
+      @include flex(initial, center, center, initial);
+      position: relative;
+      height: fit-content;
+      width: fit-content;
+    }
+    .image-container img {
+      width: 110px;
+    }
+    .info-widget {
+      position: absolute;
+      z-index: 1;
+      top: 10px;
+      left: 80px;
+
+      height: 40px;
+      width: 30px;
+
+      font-size: 27px;
+      color: white;
+
+      transition: all 100ms ease-out 0s;
+      background-color: $secondary-color;
+      border-radius: 10px 0px 0px 11px;
+      box-shadow: -3px 2px 7px 2px rgba(0, 0, 0, 0.2);
+    }
+    .info-widget ion-icon {
+      position: absolute;
+      top: 5px;
+      left: 2px;
+      cursor: pointer;
+      transition: all 100ms ease-in-out 0s;
+    }
+    .info-widget:hover {
+      left: 70px;
+      width: 40px;
+    }
+    .info-widget:hover ion-icon {
+      left: 7px;
+    }
+    figcaption.collapsed,
+    .image-container.collapsed {
+      display: none;
     }
   }
 }
@@ -483,7 +597,7 @@ div.seat-option {
 }
 @keyframes input-highlighter {
   from {
-    background: #5264ae;
+    background: $bar-primary;
   }
   to {
     width: 0;

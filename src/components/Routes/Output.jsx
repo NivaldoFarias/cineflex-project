@@ -1,4 +1,5 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 export default function Output() {
   const location = useLocation();
@@ -10,16 +11,9 @@ export default function Output() {
     },
     userData: { ids, nome, cpf },
   } = location.state;
+  const [collapsed, setCollapsed] = useState(true);
 
-  let outputCpf = "";
-  for (let i = 0; i < cpf.length; i++) {
-    if (i === 3 || i === 6) {
-      outputCpf += ".";
-    } else if (i === 9) {
-      outputCpf += "-";
-    }
-    outputCpf += cpf[i];
-  }
+  let outputCpf = formatCpf(cpf);
 
   return (
     <main id="output">
@@ -32,7 +26,7 @@ export default function Output() {
         <div className="output-movie__data">
           <p>{title}</p>
           <p>
-            {weekday} {date} {name}
+            {weekday}, {date} às {name}
           </p>
         </div>
       </section>
@@ -67,10 +61,51 @@ export default function Output() {
           <ion-icon name="person-outline"></ion-icon>
         </div>
         <div className="output-buyer__data">
-          <p>nome: {nome}</p>
-          <p>CPF: {outputCpf}</p>
+          <p>
+            Nome: <span>{nome}</span>
+          </p>
+          <p>
+            CPF: <span>{outputCpf}</span>
+          </p>
         </div>
       </section>
+      <section className="btn-container">
+        <Link to="/" className="btn-container__home-btn">
+          Voltar pra home
+        </Link>
+        <span className="bar"></span>
+      </section>
+      <figure className="output-display">
+        <div
+          className={
+            collapsed ? "image-container" : "image-container collapsed"
+          }
+        >
+          <img src={posterURL} alt={`${title} movie poster miniature`} />
+          <div className="info-widget">
+            <ion-icon
+              onClick={() => setCollapsed(!collapsed)}
+              name="information-circle-outline"
+            ></ion-icon>
+          </div>
+        </div>
+        <figcaption className={collapsed ? "collapsed" : ""}>
+          {overview}
+        </figcaption>
+      </figure>
     </main>
   );
+
+  function formatCpf(str) {
+    let newStr = "";
+    for (let i = 0; i < str.length; i++) {
+      if (i === 3 || i === 6) {
+        newStr += ".";
+      } else if (i === 9) {
+        newStr += "-";
+      }
+      newStr += str[i];
+    }
+    return newStr;
+  }
 }
