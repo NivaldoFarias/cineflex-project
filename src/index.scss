@@ -341,6 +341,112 @@ div.seat-option {
     }
   }
 }
+#output {
+  @include flex(column, center, flex-start, 20px);
+  position: relative;
+  padding: 0 24px;
+
+  h4 {
+    padding-top: 10px;
+    height: 80px;
+
+    text-align: center;
+    font-size: 1.6em;
+  }
+
+  .output-movie {
+    @include flex(column, center, flex-start, 10px);
+    width: 100%;
+
+    font-weight: 300;
+    letter-spacing: 2px;
+
+    text-align: start;
+
+    &__intro {
+      @include flex(row, space-between, center, initial);
+      width: 100%;
+    }
+    &__intro p {
+      font-size: 1.55em;
+    }
+    &__intro ion-icon {
+      font-size: 1.75em;
+    }
+    &__data {
+      @include flex(column, initial, flex-start, 3px);
+      width: 100%;
+
+      padding-left: 5px;
+      font-size: 1.1em;
+      font-style: italic;
+    }
+  }
+  .output-bookings {
+    @include flex(column, center, flex-start, 10px);
+    width: 100%;
+
+    font-weight: 300;
+    text-align: start;
+
+    &__intro {
+      @include flex(row, space-between, center, initial);
+      width: 100%;
+    }
+    &__intro p {
+      font-size: 1.55em;
+    }
+    &__intro ion-icon {
+      font-size: 1.75em;
+    }
+    &__data {
+      @include flex(column, center, flex-start, 3px);
+      width: 100%;
+
+      padding-left: 5px;
+      font-style: italic;
+    }
+    &__data p {
+      font-size: 1.2em;
+    }
+    &__data .seats {
+      @include flex(row, center, flex-end, 30px);
+      height: 30px;
+    }
+    .seat-option {
+      cursor: default;
+      padding: 0;
+    }
+  }
+  .output-buyer {
+    @include flex(column, center, flex-start, 10px);
+    width: 100%;
+
+    font-weight: 300;
+    text-align: start;
+
+    &__intro {
+      @include flex(row, space-between, center, initial);
+      width: 100%;
+    }
+    &__intro p {
+      font-size: 1.55em;
+    }
+    &__intro ion-icon {
+      font-size: 1.75em;
+    }
+    &__data {
+      @include flex(column, center, flex-start, 6px);
+      width: 100%;
+
+      padding-left: 5px;
+      font-style: italic;
+    }
+    &__data p {
+      font-size: 1.2em;
+    }
+  }
+}
 @keyframes img-pulse {
   0% {
     -webkit-transform: scale(1.1);

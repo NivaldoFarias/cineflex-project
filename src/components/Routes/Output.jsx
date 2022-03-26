@@ -11,26 +11,64 @@ export default function Output() {
     userData: { ids, nome, cpf },
   } = location.state;
 
+  let outputCpf = "";
+  for (let i = 0; i < cpf.length; i++) {
+    if (i === 3 || i === 6) {
+      outputCpf += ".";
+    } else if (i === 9) {
+      outputCpf += "-";
+    }
+    outputCpf += cpf[i];
+  }
+
   return (
     <main id="output">
       <h4>Pedido feito com sucesso!</h4>
-      <section>
-        <p>Filme e sessão</p>
-        <div className="output__movie">
+      <section className="output-movie">
+        <div className="output-movie__intro">
+          <p>Filme e sessão</p>
+          <ion-icon name="calendar-outline"></ion-icon>
+        </div>
+        <div className="output-movie__data">
           <p>{title}</p>
           <p>
             {weekday} {date} {name}
           </p>
-          <ion-icon name="calendar-outline"></ion-icon>
         </div>
       </section>
-      <section>
-        <p>Ingressos</p>
-        <div className="output__movie">
-          <p>Assento</p>
-          <div className="seat-option selected"></div>
-          <p>Assento</p>
-          <div className="seat-option selected">16</div>
+      <section className="output-bookings">
+        <div className="output-bookings__intro">
+          <p>Ingressos</p>
+          {ids.length > 1 ? (
+            <ion-icon name="bookmarks-outline"></ion-icon>
+          ) : (
+            <ion-icon name="bookmark-outline"></ion-icon>
+          )}
+        </div>
+        <div className="output-bookings__data">
+          {ids.map((id, index) => {
+            if (id > 50) {
+              for (let i = 0; id > 50; i++) {
+                id -= 50;
+              }
+            }
+            return (
+              <div key={index} className="seats">
+                <p>Assento</p>
+                <div className="seat-option selected">{id}</div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+      <section className="output-buyer">
+        <div className="output-buyer__intro">
+          <p>Comprador</p>
+          <ion-icon name="person-outline"></ion-icon>
+        </div>
+        <div className="output-buyer__data">
+          <p>nome: {nome}</p>
+          <p>CPF: {outputCpf}</p>
         </div>
       </section>
     </main>
