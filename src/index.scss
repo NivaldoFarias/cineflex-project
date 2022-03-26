@@ -9,13 +9,8 @@ body {
   height: 100vh;
   width: 100vw;
 
-  -ms-overflow-style: none; /* for IE, Edge */
-  scrollbar-width: none; /* for Firefox */
   overflow-x: hidden;
   background-color: $alt-tertiary-color;
-}
-body::-webkit-scrollbar {
-  display: none;
 }
 header {
   @include flex(initial, center, center, initial);
@@ -39,21 +34,9 @@ h4 {
 
   font-size: 1.5em;
   font-weight: 300;
+  color: $primary-color;
 
   text-shadow: $default-text-shadow;
-}
-a.default-btn {
-  @include flex(column, center, center, initial);
-
-  font-weight: 300;
-  color: white;
-
-  outline: none !important;
-  text-decoration: none !important;
-
-  box-shadow: $default-box-shadow;
-  border-radius: $default-border-radius;
-  background-color: $secondary-color;
 }
 footer.selected-movie {
   @include flex(row, flex-start, center, 15px);
@@ -82,6 +65,56 @@ footer.selected-movie {
     @include flex(column, initial, flex-start, 15px);
   }
 }
+div.seat-option {
+  @include flex(initial, center, center, initial);
+  position: relative;
+  left: 0px;
+  top: 0px;
+
+  padding: 1px 0 0 1.5px;
+  height: 26px;
+  width: 26px;
+
+  font-size: 0.77em;
+  font-weight: 300;
+  color: white;
+
+  cursor: pointer;
+
+  border-radius: 50%;
+  border: 1px solid $btn-shadow-secondary-color;
+  background-color: $secondary-color;
+  box-shadow: $btn-shadow-secondary-color 0px 3px 0px 0px;
+  transition: all 300ms ease-in-out 0s;
+
+  &.selected {
+    left: 0px;
+    top: 3px;
+
+    background-color: $tertiary-color;
+    box-shadow: transparent 0px 0px 0px 0px;
+  }
+  &.unavailable {
+    background-color: $alt-secondary-color;
+    cursor: default !important;
+  }
+}
+.default-btn {
+  @include flex(column, center, center, initial);
+
+  font-weight: 300;
+  color: white;
+
+  outline: none !important;
+  text-decoration: none !important;
+
+  cursor: pointer;
+  transition: all 300ms ease-in-out 0s;
+
+  box-shadow: $default-box-shadow;
+  border-radius: $default-border-radius;
+  background-color: $secondary-color;
+}
 #main {
   @include flex(column, center, center, 0);
   text-align: center;
@@ -109,6 +142,8 @@ footer.selected-movie {
     border-radius: $default-border-radius;
     box-shadow: $poster-box-shadow;
     background-color: transparent;
+
+    cursor: pointer;
 
     img {
       width: 95%;
@@ -149,6 +184,8 @@ footer.selected-movie {
 }
 #session {
   @include flex(column, center, center, 15px);
+  position: relative;
+
   padding: 0 24px;
 
   .seats-grid {
@@ -159,37 +196,6 @@ footer.selected-movie {
 
     width: 337px;
     height: 203px;
-  }
-  .seat-option {
-    @include flex(initial, center, center, initial);
-    position: relative;
-    left: 0px;
-    top: 0px;
-
-    padding: 1px 0 0 1.5px;
-    height: 26px;
-    width: 26px;
-
-    font-size: 0.77em;
-    font-weight: 300;
-    color: white;
-
-    border-radius: 50%;
-    border: 1px solid $btn-shadow-secondary-color;
-    background-color: $secondary-color;
-    box-shadow: $btn-shadow-secondary-color 0px 3px 0px 0px;
-    transition: all 300ms ease-in-out 0s;
-
-    &.selected {
-      left: 0px;
-      top: 3px;
-
-      background-color: $tertiary-color;
-      box-shadow: transparent 0px 0px 0px 0px;
-    }
-    &.unavailable {
-      background-color: $alt-secondary-color;
-    }
   }
   .seat-examples {
     @include flex(row, center, center, 37px);
@@ -207,6 +213,9 @@ footer.selected-movie {
 
       font-size: 13px;
       font-weight: 300;
+    }
+    div {
+      cursor: default !important;
     }
   }
   .user-inputs {
@@ -231,6 +240,9 @@ footer.selected-movie {
         border: none;
         background-color: transparent;
         border-bottom: 1px solid #757575;
+      }
+      input:hover {
+        cursor: text;
       }
       input:focus {
         outline: none;
@@ -306,6 +318,27 @@ footer.selected-movie {
     margin-top: 30px;
     height: 42px;
     width: 225px;
+  }
+  .alert-text {
+    position: absolute;
+    top: 47px;
+    left: 0;
+
+    height: 19px;
+
+    font-size: 13px;
+    font-weight: 300;
+    align-self: flex-start;
+    color: $primary-color;
+
+    transition: all 300ms ease-in-out 0s;
+
+    overflow: initial;
+
+    &.invisible {
+      height: 0;
+      overflow: hidden;
+    }
   }
 }
 @keyframes img-pulse {

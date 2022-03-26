@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export function Seat(props) {
-  const { seatData } = props;
+  const { seatData, updateSelectedSeats } = props;
   const [selected, setSelected] = useState(false);
   let css;
 
@@ -10,7 +10,13 @@ export function Seat(props) {
   else css = "seat-option";
 
   return (
-    <div className={css} onClick={() => setSelected(!selected)}>
+    <div
+      className={css}
+      onClick={() => {
+        setSelected(!selected);
+        updateSelectedSeats(seatData.id);
+      }}
+    >
       {seatData.name}
     </div>
   );

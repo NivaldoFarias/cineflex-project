@@ -6,6 +6,12 @@
   font-family: "Roboto", sans-serif !important;
   letter-spacing: 1px;
   cursor: default;
+  -ms-overflow-style: none; /* for IE, Edge */
+  scrollbar-width: none; /* for Firefox */
+}
+*::-webkit-scrollbar {
+  display: none;
+  appearance: none;
 }
 *.hidden {
   display: none !important;
