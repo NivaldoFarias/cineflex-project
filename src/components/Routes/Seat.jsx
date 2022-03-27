@@ -13,8 +13,10 @@ export function Seat(props) {
     <div
       className={css}
       onClick={() => {
-        setSelected(!selected);
-        updateSelectedSeats(seatData.id);
+        if (seatData.isAvailable) {
+          setSelected(!selected);
+          updateSelectedSeats(seatData.id);
+        }
       }}
     >
       {seatData.name}

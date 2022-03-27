@@ -10,11 +10,9 @@ export default function Output() {
       day: { weekday, date },
       name,
     },
-    userData: { ids, nome, cpf },
+    userData: { ids, compradores },
   } = location.state;
   const [collapsed, setCollapsed] = useState(true);
-
-  let outputCpf = formatCpf(cpf);
 
   function handleClick() {
     navigate(-1);
@@ -32,7 +30,7 @@ export default function Output() {
         <section className="output-movie">
           <div className="output-movie__intro">
             <p>Filme e sessão</p>
-            <ion-icon name="calendar-outline"></ion-icon>
+            <ion-icon name="film-outline"></ion-icon>
           </div>
           <div className="output-movie__data">
             <p>{title}</p>
@@ -41,45 +39,76 @@ export default function Output() {
             </p>
           </div>
         </section>
-        <section className="output-bookings">
-          <div className="output-bookings__intro">
-            <p>Ingressos</p>
-            {ids.length > 1 ? (
-              <ion-icon name="bookmarks-outline"></ion-icon>
-            ) : (
-              <ion-icon name="bookmark-outline"></ion-icon>
-            )}
-          </div>
-          <div className="output-bookings__data">
-            {ids.map((id, index) => {
-              if (id > 50) {
-                for (let i = 0; id > 50; i++) {
-                  id -= 50;
-                }
-              }
-              return (
-                <div key={index} className="seats">
-                  <p>Assento</p>
-                  <div className="seat-option selected">{id}</div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-        <section className="output-buyer">
-          <div className="output-buyer__intro">
-            <p>Comprador</p>
-            <ion-icon name="person-outline"></ion-icon>
-          </div>
-          <div className="output-buyer__data">
-            <p>
-              Nome: <span>{nome}</span>
-            </p>
-            <p>
-              CPF: <span>{outputCpf}</span>
-            </p>
-          </div>
-        </section>
+        {compradores.length === 1 ? (
+          <>
+            <section className="output-bookings">
+              <div className="output-bookings__intro">
+                <p>Ingressos</p>
+                {ids.length > 1 ? (
+                  <ion-icon name="bookmarks-outline"></ion-icon>
+                ) : (
+                  <ion-icon name="bookmark-outline"></ion-icon>
+                )}
+              </div>
+              <div className="output-bookings__data">
+                {ids.map((id, index) => {
+                  return (
+                    <div key={index} className="seats">
+                      <p>Assento</p>
+                      <div className="seat-option selected">
+                        {id % 50 === 0 ? 50 : id % 50}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+            <section className="output-buyer">
+              <div className="output-buyer__intro">
+                <p>Comprador</p>
+                <ion-icon name="person-outline"></ion-icon>
+              </div>
+              <div className="output-buyer__data">
+                <p>
+                  Nome: <span>{compradores[0].nome}</span>
+                </p>
+                <p>
+                  CPF: <span>{formatCpf(compradores[0].cpf)}</span>
+                </p>
+              </div>
+            </section>
+          </>
+        ) : (
+          <>
+            <section className="output-tickets">
+              <div className="output-tickets__intro">
+                <p>Ingressos</p>
+                <ion-icon name="pricetags-outline"></ion-icon>
+              </div>
+              {compradores.map((comprador, index) => {
+                const { idAssento, nome, cpf } = comprador;
+                return (
+                  <div key={index} className="output-tickets__ticket">
+                    <div className="seat">
+                      <p>Assento</p>
+                      <div className="seat-option selected">
+                        {idAssento % 50 === 0 ? 50 : idAssento % 50}
+                      </div>
+                    </div>
+                    <div className="buyer">
+                      <p>
+                        Nome: <span>{nome}</span>
+                      </p>
+                      <p>
+                        CPF: <span>{formatCpf(cpf)}</span>
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </section>
+          </>
+        )}
         <section className="btn-container">
           <Link to="/" className="btn-container__home-btn">
             Voltar pra home
