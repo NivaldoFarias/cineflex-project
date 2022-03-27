@@ -1,8 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function Output() {
   const location = useLocation();
+  const navigate = useNavigate();
   const {
     seatsData: {
       movie: { title, posterURL, overview },
@@ -15,85 +16,96 @@ export default function Output() {
 
   let outputCpf = formatCpf(cpf);
 
+  function handleClick() {
+    navigate(-1);
+  }
+
   return (
-    <main id="output">
-      <h4>Pedido feito com sucesso!</h4>
-      <section className="output-movie">
-        <div className="output-movie__intro">
-          <p>Filme e sessão</p>
-          <ion-icon name="calendar-outline"></ion-icon>
-        </div>
-        <div className="output-movie__data">
-          <p>{title}</p>
-          <p>
-            {weekday}, {date} às {name}
-          </p>
-        </div>
-      </section>
-      <section className="output-bookings">
-        <div className="output-bookings__intro">
-          <p>Ingressos</p>
-          {ids.length > 1 ? (
-            <ion-icon name="bookmarks-outline"></ion-icon>
-          ) : (
-            <ion-icon name="bookmark-outline"></ion-icon>
-          )}
-        </div>
-        <div className="output-bookings__data">
-          {ids.map((id, index) => {
-            if (id > 50) {
-              for (let i = 0; id > 50; i++) {
-                id -= 50;
-              }
-            }
-            return (
-              <div key={index} className="seats">
-                <p>Assento</p>
-                <div className="seat-option selected">{id}</div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-      <section className="output-buyer">
-        <div className="output-buyer__intro">
-          <p>Comprador</p>
-          <ion-icon name="person-outline"></ion-icon>
-        </div>
-        <div className="output-buyer__data">
-          <p>
-            Nome: <span>{nome}</span>
-          </p>
-          <p>
-            CPF: <span>{outputCpf}</span>
-          </p>
-        </div>
-      </section>
-      <section className="btn-container">
-        <Link to="/" className="btn-container__home-btn">
-          Voltar pra home
-        </Link>
-        <span className="bar"></span>
-      </section>
-      <figure className="output-display">
-        <div
-          className={
-            collapsed ? "image-container" : "image-container collapsed"
-          }
-        >
-          <img src={posterURL} alt={`${title} movie poster miniature`} />
-          <div className="info-widget">
-            <ion-icon
-              onClick={() => setCollapsed(!collapsed)}
-              name="information-circle-outline"
-            ></ion-icon>
+    <>
+      <ion-icon
+        onClick={handleClick}
+        class="return-btn"
+        name="chevron-back-outline"
+      ></ion-icon>
+      <main id="output">
+        <h4>Pedido feito com sucesso!</h4>
+        <section className="output-movie">
+          <div className="output-movie__intro">
+            <p>Filme e sessão</p>
+            <ion-icon name="calendar-outline"></ion-icon>
           </div>
-        </div>
-        <figcaption className={collapsed ? "collapsed" : ""}>
-          {overview}
-        </figcaption>
-      </figure>
-    </main>
+          <div className="output-movie__data">
+            <p>{title}</p>
+            <p>
+              {weekday}, {date} às {name}
+            </p>
+          </div>
+        </section>
+        <section className="output-bookings">
+          <div className="output-bookings__intro">
+            <p>Ingressos</p>
+            {ids.length > 1 ? (
+              <ion-icon name="bookmarks-outline"></ion-icon>
+            ) : (
+              <ion-icon name="bookmark-outline"></ion-icon>
+            )}
+          </div>
+          <div className="output-bookings__data">
+            {ids.map((id, index) => {
+              if (id > 50) {
+                for (let i = 0; id > 50; i++) {
+                  id -= 50;
+                }
+              }
+              return (
+                <div key={index} className="seats">
+                  <p>Assento</p>
+                  <div className="seat-option selected">{id}</div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+        <section className="output-buyer">
+          <div className="output-buyer__intro">
+            <p>Comprador</p>
+            <ion-icon name="person-outline"></ion-icon>
+          </div>
+          <div className="output-buyer__data">
+            <p>
+              Nome: <span>{nome}</span>
+            </p>
+            <p>
+              CPF: <span>{outputCpf}</span>
+            </p>
+          </div>
+        </section>
+        <section className="btn-container">
+          <Link to="/" className="btn-container__home-btn">
+            Voltar pra home
+          </Link>
+          <span className="bar"></span>
+        </section>
+        <figure className="output-display">
+          <div
+            className={
+              collapsed ? "image-container" : "image-container collapsed"
+            }
+          >
+            <img src={posterURL} alt={`${title} movie poster miniature`} />
+            <div className="info-widget">
+              <ion-icon
+                onClick={() => setCollapsed(!collapsed)}
+                name="information-circle-outline"
+              ></ion-icon>
+            </div>
+          </div>
+          <figcaption className={collapsed ? "collapsed" : ""}>
+            {overview}
+          </figcaption>
+        </figure>
+      </main>
+    </>
   );
 
   function formatCpf(str) {

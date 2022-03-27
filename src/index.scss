@@ -13,7 +13,9 @@ body {
   background-color: $alt-tertiary-color;
 }
 header {
-  @include flex(initial, center, center, initial);
+  @include flex(initial, center, center, 10px);
+  position: fixed;
+  z-index: 1;
 
   width: 100%;
   height: 67px;
@@ -25,6 +27,10 @@ header {
 
   box-shadow: $default-box-shadow;
   background-color: $primary-color;
+
+  img {
+    width: 36px;
+  }
 }
 h4 {
   @include flex(initial, center, center, initial);
@@ -38,17 +44,21 @@ h4 {
 
   text-shadow: $default-text-shadow;
 }
+main {
+  padding-top: 67px;
+  padding-bottom: 126px;
+}
 a {
   outline: none;
   text-decoration: none;
 }
 footer.selected-movie {
-  @include flex(row, flex-start, center, 15px);
+  @include flex(initial, center, center, initial);
   position: fixed;
   bottom: 0;
   right: 0;
 
-  padding: 10px 14px;
+  padding: 7px 7px;
   min-height: 117px;
   width: 100%;
 
@@ -56,17 +66,25 @@ footer.selected-movie {
   font-weight: 300;
   letter-spacing: 2px;
 
-  box-shadow: $invert-box-shadow;
-  background-color: $alt-tertiary-color;
+  .container {
+    @include flex(row, flex-start, center, 15px);
 
+    padding: 10px 10px;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 8px;
+    box-shadow: $poster-box-shadow;
+    background-color: $primary-color;
+  }
   img {
     height: 92px;
 
-    border: 4px solid $primary-color;
     border-radius: $default-border-radius;
   }
   .overview {
     @include flex(column, initial, flex-start, 15px);
+    color: white;
   }
 }
 div.seat-option {
@@ -115,6 +133,18 @@ div.seat-option {
   box-shadow: $default-box-shadow;
   border-radius: $default-border-radius;
   background-color: $secondary-color;
+}
+.return-btn {
+  position: fixed;
+  z-index: 1;
+  top: 14px;
+  left: 17px;
+
+  font-size: 36px;
+  color: white;
+
+  cursor: pointer;
+  transition: all 300ms ease-in-out 0s;
 }
 #main {
   @include flex(column, center, center, 0);
@@ -187,7 +217,7 @@ div.seat-option {
   @include flex(column, center, center, 15px);
   position: relative;
 
-  padding: 0 24px;
+  padding: initial 24px;
 
   .seats-grid {
     display: grid;
@@ -223,8 +253,17 @@ div.seat-option {
     @include flex(column, center, center, 35px);
     position: relative;
 
-    margin-top: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
 
+    .seat-number {
+      position: absolute;
+      top: -35px;
+      left: -10px;
+
+      font-size: 1.1em;
+      color: $primary-color;
+    }
     /* modified input field css sourced from https://codepen.io/chris__sev/pen/LYOyjY?editors=1100 */
     &__group {
       position: relative;
@@ -316,7 +355,7 @@ div.seat-option {
     }
   }
   .default-btn {
-    margin-top: 30px;
+    margin: 30px 0;
     height: 42px;
     width: 225px;
   }

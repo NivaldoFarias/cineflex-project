@@ -7,10 +7,12 @@ export function Footer(props) {
 
   return (
     <footer className="selected-movie">
-      <img src={posterURL} alt={`${title} movie poster miniature`} />
-      <div className="overview">
-        <p>{title}</p>
-        {date ? <p>{`${date} - ${hour}`}</p> : null}
+      <div className="container">
+        <img src={posterURL} alt={`${title} movie poster miniature`} />
+        <div className="overview">
+          <p>{title}</p>
+          {date ? <p>{`${date} - ${hour}`}</p> : null}
+        </div>
       </div>
     </footer>
   );
