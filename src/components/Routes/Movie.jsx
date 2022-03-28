@@ -55,7 +55,6 @@ export default function Sessions() {
               date,
               showtimes: [firstOption, secondOption],
             } = session;
-
             return (
               <section key={index} className="schedule">
                 <p className="schedule__date">{`${weekday} ${date}`}</p>

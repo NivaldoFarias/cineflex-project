@@ -253,6 +253,9 @@ div.seat-option {
       height: $time-option-box-height;
       width: $time-option-box-width;
     }
+    @media only screen and (min-width: 480px) {
+      width: 390px;
+    }
   }
 }
 #session {
@@ -587,7 +590,7 @@ div.seat-option {
 
     &__home-btn {
       align-self: center;
-      margin: 10px 0 25px;
+      margin-top: 10px;
 
       font-size: 1.1em;
       letter-spacing: 3px;
@@ -605,6 +608,7 @@ div.seat-option {
     }
     .bar {
       position: relative;
+      margin-bottom: 25px;
       display: block;
       width: 220px;
     }
@@ -645,7 +649,7 @@ div.seat-option {
       padding: 5px;
       padding-right: 15px;
       height: fit-content;
-      width: 100%;
+      width: 311px;
 
       font-size: 0.9em;
       line-height: 16px;
