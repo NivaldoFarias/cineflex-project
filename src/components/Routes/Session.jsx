@@ -25,7 +25,6 @@ export default function Sessions() {
 
     request.then((response) => {
       setSeatsData({ ...response.data });
-      console.log(response.data);
     });
     request.catch((err) => {
       console.error(err);
@@ -71,8 +70,7 @@ export default function Sessions() {
       ids: userData.ids,
       compradores: userData.compradores,
     });
-    request.then((response) => {
-      console.log(response.data);
+    request.then(() => {
       navigate("/output", { state: { seatsData, userData } });
     });
     request.catch((error) => console.log(error));

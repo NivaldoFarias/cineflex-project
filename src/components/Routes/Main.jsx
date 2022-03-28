@@ -12,7 +12,6 @@ export default function Main() {
 
     request.then((resposta) => {
       setMovies(resposta.data);
-      console.log(resposta.data);
     });
     request.catch((err) => {
       console.error(err);

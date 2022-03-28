@@ -21,7 +21,6 @@ export default function Sessions() {
 
     request.then((resposta) => {
       setSessions({ ...resposta.data });
-      console.log(resposta.data);
     });
     request.catch((err) => {
       console.error(err);

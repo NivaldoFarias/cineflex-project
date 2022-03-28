@@ -43,11 +43,16 @@ export default function Output() {
           <>
             <section className="output-bookings">
               <div className="output-bookings__intro">
-                <p>Ingressos</p>
                 {ids.length > 1 ? (
-                  <ion-icon name="bookmarks-outline"></ion-icon>
+                  <>
+                    <p>Ingressos</p>
+                    <ion-icon name="bookmarks-outline"></ion-icon>
+                  </>
                 ) : (
-                  <ion-icon name="bookmark-outline"></ion-icon>
+                  <>
+                    <p>Ingresso</p>
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                  </>
                 )}
               </div>
               <div className="output-bookings__data">
