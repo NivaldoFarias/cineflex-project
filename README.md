@@ -16,7 +16,7 @@
     <a href="https://github.com/NivaldoFarias/projeto9-cineflex/blob/main/src/index.scss"><strong>SCSS code»</strong></a>
 </div>
 
-<!-- ![Banner](https://github.com/NivaldoFarias/projeto8-zaprecall/blob/main/src/assets/zaprecall-showroom.png?raw=true) -->
+![Banner](https://github.com/NivaldoFarias/projeto9-cineflex/blob/main/src/assets/cineflex-showroom.png?raw=true) 
 
 <!-- ABOUT THE PROJECT -->
 
