@@ -3,7 +3,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/NivaldoFarias/projeto9-cineflex">
-    <img src="https://www.driven.com.br/wp-content/uploads/2021/11/logo-footer.svg" alt="Logo" width="100">
+    <img src="https://github.com/NivaldoFarias/projeto9-cineflex/blob/main/src/assets/logo.png" alt="Logo" width="130">
   </a>
 
 <h3 align="center">Cineflex Project</h3>
