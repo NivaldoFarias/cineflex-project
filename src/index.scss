@@ -45,7 +45,7 @@ h4 {
   text-shadow: $default-text-shadow;
 }
 main {
-  padding-top: 67px;
+  padding-top: 80px;
   padding-bottom: 126px;
 }
 a {
@@ -274,6 +274,8 @@ div.seat-option {
   max-width: 100%;
 
   background-color: transparent;
+  padding-top: 67px;
+  padding-bottom: 30px;
 
   section {
     @include flex(row, center, center, 30px);
@@ -343,7 +345,8 @@ div.seat-option {
   @include flex(column, center, center, 15px);
   position: relative;
 
-  padding: initial 24px;
+  padding-left: 24px;
+  padding-right: 24px;
 
   .seats-grid {
     display: grid;
@@ -510,7 +513,9 @@ div.seat-option {
 #output {
   @include flex(column, center, flex-start, 25px);
   position: relative;
-  padding: 0 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 0 !important;
 
   h4 {
     padding-top: 20px;
