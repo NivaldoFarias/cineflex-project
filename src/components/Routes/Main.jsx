@@ -1,7 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
-import { useEffect, useState } from "react";
 
 export default function Main() {
   const [movies, setMovies] = useState(null);
@@ -21,7 +20,14 @@ export default function Main() {
   }, []);
 
   if (movies === null) {
-    return <p>Carregando...</p>;
+    return (
+      <div className="loading-spinner">
+        <div className="spinner">
+          <div className="ripple primary"></div>
+          <div className="ripple secondary"></div>
+        </div>
+      </div>
+    );
   } else {
     return (
       <main id="main">

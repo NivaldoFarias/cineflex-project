@@ -116,22 +116,24 @@ export default function Output() {
           <span className="bar"></span>
         </section>
         <figure className="output-display">
-          <div
-            className={
-              collapsed ? "image-container" : "image-container collapsed"
-            }
-          >
-            <img src={posterURL} alt={`${title} movie poster miniature`} />
-            <div className="info-widget">
+          <div className="image-container">
+            <img
+              className={collapsed ? "" : "collapsed"}
+              src={posterURL}
+              alt={`${title} movie poster miniature`}
+            />
+            <div
+              className={collapsed ? "info-widget" : "info-widget collapsed"}
+            >
               <ion-icon
                 onClick={() => setCollapsed(!collapsed)}
                 name="information-circle-outline"
               ></ion-icon>
             </div>
+            <figcaption className={collapsed ? "collapsed" : ""}>
+              {overview}
+            </figcaption>
           </div>
-          <figcaption className={collapsed ? "collapsed" : ""}>
-            {overview}
-          </figcaption>
         </figure>
       </main>
     </>

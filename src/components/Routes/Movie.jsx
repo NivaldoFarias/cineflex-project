@@ -29,7 +29,14 @@ export default function Sessions() {
   }, [movieID]);
 
   if (sessions === null) {
-    return <p>Carregando...</p>;
+    return (
+      <div className="loading-spinner">
+        <div className="spinner">
+          <div className="ripple primary"></div>
+          <div className="ripple secondary"></div>
+        </div>
+      </div>
+    );
   } else {
     return (
       <>
